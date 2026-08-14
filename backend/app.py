@@ -58,10 +58,12 @@ def create_app():
     # SECRET KEY
     # --------------------------------------------------------
 
-    app.config["SECRET_KEY"] = os.environ.get(
-        "FLASK_SECRET_KEY",
-        "dev-secret"
-    )
+    app.config["SECRET_KEY"] = os.environ.get("FLASK_SECRET_KEY")
+
+    if not app.config["SECRET_KEY"]:
+        raise RuntimeError(
+            "FLASK_SECRET_KEY environment variable is not configured"
+        )
 
     # --------------------------------------------------------
     # DATABASE
@@ -111,8 +113,6 @@ def create_app():
     # --------------------------------------------------------
     # SESSION CONFIGURATION
     # --------------------------------------------------------
-
-    app.config["SECRET_KEY"] = os.environ.get("FLASK_SECRET_KEY")
 
     app.config["SESSION_COOKIE_NAME"] = "neuralscan_session"
     app.config["SESSION_COOKIE_HTTPONLY"] = True
