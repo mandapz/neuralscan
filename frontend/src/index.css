@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Unbounded:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Palette — dark tech / neon green */
+  --bg:          #0a0a09;
+  --bg-2:        #141412;
+  --bg-3:        #1c1c19;
+  --surface:     #131311;
+  --ink:         #f5f4ef;
+  --ink-2:       #cac8be;
+  --ink-3:       #97958a;
+  --ink-4:       #67655c;
+  --border:      rgba(245,244,240,0.10);
+  --border-2:    rgba(245,244,240,0.20);
+  --blue:        #7dd0ff;
+  --blue-dim:    rgba(125,208,255,0.10);
+  --blue-light:  rgba(125,208,255,0.08);
+  --red:         #ff7a70;
+  --red-dim:     rgba(255,122,112,0.10);
+  --red-light:   rgba(255,122,112,0.08);
+  --green:       #a9e857;
+  --green-dim:   rgba(169,232,87,0.10);
+  --green-light: rgba(169,232,87,0.08);
+  --amber:       #ffbd5c;
+  /* Typography */
+  --font-sans:  'DM Sans', sans-serif;
+  --font-serif: 'Unbounded', sans-serif;
+  --font-mono:  'DM Mono', monospace;
+  /* Radii */
+  --r-sm:  4px;
+  --r:     8px;
+  --r-lg:  12px;
+  --r-xl:  16px;
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25);
+  --shadow:    0 4px 14px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,0.55), 0 4px 10px rgba(0,0,0,0.35);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll; /* always reserve scrollbar space so page height differences don't shift fixed elements like the navbar */
+}
+
+:root {
+  --content-w: 820px; /* shared content column width across all pages */
+}
+
+body {
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(169,232,87,0.05), transparent 60%),
+    var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-wrap: break-word; /* long words break instead of pushing past their container's edge */
+}
+
+/* Layout-stability helpers — collapse without unmounting, so nothing jumps abruptly */
+.collapsible {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.4s ease;
+}
+.collapsible--hidden {
+  max-height: 0 !important;
+  opacity: 0;
+  margin: 0 !important;
+  pointer-events: none;
+}
+
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+img { max-width: 100%; display: block; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scanLine {
+  0%   { top: -2px; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+@keyframes drawBar {
+  from { width: 0; }
+}
+
+.anim-fade-up { animation: fadeUp 0.4s ease both; }
+.anim-fade-in { animation: fadeIn 0.3s ease both; }

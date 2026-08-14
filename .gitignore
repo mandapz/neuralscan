@@ -1,0 +1,47 @@
+# macOS
+.DS_Store
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache / build
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+
+# PyTorch / training models
+*.pt
+*.pth
+*.ckpt
+
+# Node.js
+node_modules/
+
+# Frontend build
+frontend/dist/
+frontend/build/
+
+# IDE
+.vscode/
+.idea/
+
+# Vercel
+.vercel/

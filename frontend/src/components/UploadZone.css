@@ -1,0 +1,92 @@
+.uz { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+
+.uz__zone {
+  border: 1.5px dashed var(--border-2);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  min-height: 320px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.uz__zone:hover { border-color: var(--green); background: var(--green-light); }
+.uz__zone--drag { border-color: var(--green); background: var(--green-light); border-style: solid; }
+.uz__zone--filled { border-style: solid; border-color: var(--border); cursor: default; }
+.uz__zone--scanning { pointer-events: none; }
+
+.uz__empty { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 3rem; text-align: center; user-select: none; }
+.uz__icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--bg-2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-4); margin-bottom: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.uz__zone:hover .uz__icon, .uz__zone--drag .uz__icon {
+  background: var(--green-light); color: var(--green); border-color: rgba(169,232,87,0.2);
+}
+.uz__label { font-size: 17px; font-weight: 500; color: var(--ink-2); }
+.uz__sub { font-size: 15px; color: var(--ink-4); }
+
+/* Preview */
+.uz__preview { width: 100%; min-height: 320px; position: relative; }
+.uz__img { width: 100%; min-height: 320px; height: 100%; object-fit: cover; display: block; }
+.uz__clear {
+  position: absolute; top: 10px; right: 10px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(10,10,9,0.75); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-3); cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  backdrop-filter: blur(4px);
+}
+.uz__clear:hover { background: rgba(10,10,9,0.9); color: var(--ink); }
+
+/* Scan overlay */
+.uz__scan-overlay {
+  position: absolute; inset: 0;
+  background: rgba(10,10,9,0.45);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 1.5rem;
+}
+.uz__scan-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  box-shadow: 0 0 10px rgba(169,232,87,0.5);
+  animation: scanLine 1.4s ease-in-out infinite;
+}
+.uz__scan-badge {
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(19,19,17,0.85); border: 1px solid var(--border);
+  border-radius: 20px; padding: 6px 16px;
+  font-size: 14.5px; font-family: var(--font-mono);
+  color: var(--green); backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+}
+.uz__scan-dot {
+  width: 6px; height: 6px; background: var(--green);
+  border-radius: 50%; animation: pulse 1s ease-in-out infinite;
+}
+
+/* Bar */
+.uz__bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+}
+.uz__file-info { display: flex; align-items: center; gap: 7px; color: var(--ink-4); font-size: 15px; min-width: 0; }
+.uz__fname { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; color: var(--ink-2); }
+.uz__fsize { flex-shrink: 0; font-family: var(--font-mono); font-size: 13px; }
+.uz__btn {
+  display: flex; align-items: center; gap: 7px;
+  background: linear-gradient(135deg, var(--green), #6fb83a); color: #173404;
+  font-size: 15.5px; font-weight: 600;
+  padding: 8px 18px; border-radius: 999px;
+  flex-shrink: 0; transition: opacity 0.15s, transform 0.1s;
+}
+.uz__btn:hover { opacity: 0.9; }
+.uz__btn:active { transform: scale(0.97); }
+
+.uz__error { font-size: 15px; color: var(--red); padding: 0 2px; }

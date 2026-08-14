@@ -1,0 +1,21 @@
+/* Only content-scroll behaviour lives here — the outer frame shell
+   (.frame / .frame__box) is shared with Landing via styles/Frame.css
+   so every page renders the exact same cream margin + dark frame. */
+
+.pf__content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 860px) {
+  /* Mobile Safari's collapsing toolbar makes 100dvh-based inner scroll
+     boxes unreliable — content would get clipped instead of fully
+     scrolling. .frame__box is already height:auto on mobile, so let
+     the whole page scroll normally instead of a clipped inner box. */
+  .pf__content {
+    overflow-y: visible;
+    min-height: auto;
+  }
+}

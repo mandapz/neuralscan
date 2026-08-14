@@ -1,0 +1,93 @@
+.home {
+  padding-top: 2.5rem;
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 5rem;
+}
+
+.home__hero {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: 3rem 0 2.25rem;
+  animation: fadeUp 0.45s ease both;
+}
+
+.home__eyebrow {
+  display: inline-block;
+  font-size: 13px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: var(--green);
+  background: var(--green-light);
+  border: 1px solid rgba(169,232,87,0.15);
+  border-radius: var(--r-sm);
+  padding: 3px 10px;
+  margin-bottom: 1rem;
+}
+
+.home__title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 46px);
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  letter-spacing: -0.3px;
+}
+.home__title em { font-style: italic; color: var(--green); }
+
+.home__subtitle {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-3);
+  max-width: 500px;
+}
+
+.home__scanner {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  animation: fadeUp 0.45s 0.08s ease both;
+}
+
+.home__error {
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--red);
+  text-align: center;
+}
+
+.home__features {
+  max-width: var(--content-w);
+  margin: 1.25rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  animation: fadeUp 0.45s 0.16s ease both;
+}
+@media (max-width: 480px) {
+  /* Single-column layout stacks 3 cards vertically — the 200px cap
+     that fit one row of 3 side-by-side cards was clipping the 3rd
+     card once they stack. */
+  .home__features { grid-template-columns: 1fr; }
+}
+
+.home__feature {
+  display: flex; align-items: center; gap: 11px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+}
+
+.home__feature-icon {
+  width: 30px; height: 30px; flex-shrink: 0;
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-3);
+}
+
+.home__feature-text { min-width: 0; overflow-wrap: break-word; }
+.home__feature-name { font-size: 15px; font-weight: 600; color: var(--ink); }
+.home__feature-desc { font-size: 14px; color: var(--ink-4); line-height: 1.4; }

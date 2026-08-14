@@ -1,0 +1,182 @@
+.hist {
+  padding-top: 2.5rem;
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 5rem;
+}
+
+.hist__head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 1rem; padding: 2.5rem 0 1.5rem;
+  animation: fadeUp 0.4s ease both;
+}
+.hist__head-info { flex: 1; min-width: 0; }
+.hist__title {
+  font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: clamp(24px, 7vw, 30px);
+  line-height: 1.15;
+  color: var(--ink); letter-spacing: -0.2px; margin-bottom: 3px;
+}
+.hist__sub { font-size: 15.5px; color: var(--ink-4); }
+
+@media (max-width: 560px) {
+  /* Sharing a row with the button squeezed the text column narrow
+     enough that the subtitle wrapped into 3 short, ragged lines.
+     Stack instead so title/subtitle get the full row width. */
+  .hist__head { flex-direction: column; align-items: stretch; }
+  .hist__clear { align-self: flex-start; }
+}
+
+.hist__clear {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 14.5px; color: var(--ink-4);
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  padding: 6px 14px; background: var(--surface); flex-shrink: 0;
+  transition: all 0.15s;
+}
+.hist__clear:hover { color: var(--red); border-color: rgba(255,122,112,0.3); background: var(--red-light); }
+.hist__clear--confirm { color: var(--red); border-color: rgba(255,122,112,0.4); background: var(--red-light); }
+
+/* Banner */
+.hist__banner {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 16px; margin-bottom: 1.25rem;
+  background: var(--green-light); border: 1px solid rgba(169,232,87,0.15);
+  border-radius: var(--r-lg); font-size: 15px; color: var(--ink-3);
+  animation: fadeUp 0.4s 0.05s ease both;
+}
+.hist__banner svg { flex-shrink: 0; color: var(--green); }
+.hist__banner-btn {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 14.5px; font-weight: 600; color: var(--green);
+  background: white; border: 1px solid rgba(169,232,87,0.25);
+  border-radius: var(--r-sm); padding: 4px 14px;
+  transition: background 0.15s;
+}
+.hist__banner-btn:hover { background: var(--green-light); }
+
+/* Stats */
+.hist__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px; margin-bottom: 1.5rem;
+  animation: fadeUp 0.4s 0.08s ease both;
+}
+.hist__stat {
+  display: flex; align-items: center; gap: 8px;
+  min-width: 0;
+  padding: 9px 12px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--r-lg);
+  color: var(--ink-4);
+}
+.hist__stat--ai  { color: var(--red); }
+.hist__stat--real { color: var(--green); }
+.hist__stat-n { font-family: var(--font-mono); font-size: 18px; font-weight: 500; color: var(--ink); flex-shrink: 0; }
+.hist__stat-l { min-width: 0; font-size: 14px; overflow-wrap: break-word; }
+
+@media (max-width: 480px) {
+  /* 3-up was squeezing each card to ~100px, forcing "AI-Generated"
+     into a cramped 3-line wrap. Stack full-width instead, like the
+     feature cards on the Deteksi page. */
+  .hist__stats { grid-template-columns: 1fr; }
+  .hist__stat { padding: 11px 16px; }
+  .hist__stat-l { font-size: 14.5px; line-height: 1.3; }
+}
+
+/* Empty */
+.hist__empty { text-align: center; padding: 5rem 2rem; animation: fadeUp 0.4s ease both; }
+.hist__empty-icon {
+  width: 52px; height: 52px; margin: 0 auto 1rem;
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-4);
+}
+.hist__empty-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.25; color: var(--ink); margin-bottom: 5px; }
+.hist__empty-sub   { font-size: 15.5px; color: var(--ink-4); }
+
+/* List */
+.hist__list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.hist__item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--r-lg);
+  transition: border-color 0.15s;
+}
+.hist__item:hover { border-color: var(--border-2); }
+
+.hist__thumb-wrap { position: relative; flex-shrink: 0; }
+.hist__thumb { width: 72px; height: 56px; border-radius: var(--r-sm); object-fit: cover; display: block; }
+.hist__thumb-fb {
+  width: 72px; height: 56px; border-radius: var(--r-sm);
+  background: var(--bg-2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; color: var(--ink-4);
+}
+.hist__chip {
+  position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+  font-size: 11px; font-weight: 600; padding: 2px 7px;
+  border-radius: 20px; white-space: nowrap;
+}
+.hist__chip--ai   { background: var(--red-light); color: var(--red); border: 1px solid rgba(255,122,112,0.2); }
+.hist__chip--real { background: var(--green-light); color: var(--green); border: 1px solid rgba(169,232,87,0.2); }
+
+.hist__content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.hist__top { display: flex; align-items: baseline; gap: 8px; }
+.hist__name {
+  min-width: 0;
+  font-size: 15.5px; font-weight: 500; color: var(--ink);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.hist__time { font-size: 13.5px; color: var(--ink-4); font-family: var(--font-mono); flex-shrink: 0; }
+.hist__desc {
+  font-size: 14.5px; color: var(--ink-4); line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.hist__bar-row { display: flex; align-items: center; gap: 9px; }
+.hist__bar-track {
+  flex: 1; height: 3px; background: var(--bg-3);
+  border-radius: 2px; overflow: hidden;
+}
+.hist__bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; }
+.hist__bar-fill--ai   { background: var(--red); }
+.hist__bar-fill--real { background: var(--green); }
+.hist__conf { font-size: 13px; font-family: var(--font-mono); color: var(--ink-4); flex-shrink: 0; }
+
+.hist__del {
+  flex-shrink: 0; width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  color: var(--ink-4); align-self: center;
+  transition: all 0.15s;
+}
+.hist__del:hover { color: var(--red); border-color: rgba(255,122,112,0.3); background: var(--red-light); }
+
+/* Skeleton */
+.hist__skel-title {
+  width: 180px; height: 28px; background: var(--bg-3);
+  border-radius: var(--r-sm); margin-top: 2.5rem;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+.hist__skel-list { display: flex; flex-direction: column; gap: 8px; margin-top: 2rem; }
+.hist__skel-item {
+  height: 84px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--r-lg);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+/* Pager */
+.hist__pager {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; margin-top: 1.5rem;
+  padding-top: 1.5rem; border-top: 1px solid var(--border);
+}
+.hist__pager-btn {
+  font-size: 15px; color: var(--ink-3);
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  padding: 6px 14px; background: var(--surface);
+  transition: all 0.15s;
+}
+.hist__pager-btn:hover:not(:disabled) { color: var(--green); border-color: rgba(169,232,87,0.3); background: var(--green-light); }
+.hist__pager-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.hist__pager-info { font-size: 14.5px; font-family: var(--font-mono); color: var(--ink-4); }

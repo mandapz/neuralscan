@@ -1,0 +1,176 @@
+.nav {
+  background: #f6f3ec;
+  border-radius: 999px;
+  padding: 12px 14px 12px 22px;
+  flex-shrink: 0;
+  max-width: 100%;
+  animation: navRise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.nav__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+@keyframes navRise {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Brand */
+.nav__brand {
+  display: flex; align-items: center; gap: 9px;
+  justify-self: start;
+  min-width: 0;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 600; font-size: clamp(13px, 3.6vw, 16px); letter-spacing: 0.02em;
+  color: #141311;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nav__logo-mark {
+  width: 28px; height: 28px; border-radius: 7px;
+  background: linear-gradient(135deg, #a9e857, #6fb83a);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; line-height: 1; font-weight: 700; color: #173404;
+}
+
+/* Links */
+.nav__links {
+  display: flex; gap: 6px;
+  justify-self: center;
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 10px;
+  border: 1px solid rgba(20,19,17,0.08);
+}
+.nav__link {
+  font-size: 15.5px; font-weight: 500; color: #8a887c;
+  text-decoration: none; white-space: nowrap;
+  padding: 4px 14px; border-radius: 999px;
+  transition: color 0.15s, background 0.15s;
+}
+.nav__link:hover { color: #141311; }
+.nav__link--active { color: #141311; background: #f0ede4; font-weight: 600; }
+
+.nav__right { display: flex; align-items: center; justify-self: end; gap: 10px; min-width: 0; }
+
+/* Auth */
+.nav__auth-skeleton {
+  width: 84px; height: 36px; border-radius: 999px;
+  background: #e6e2d6; animation: navPulse 1.4s ease-in-out infinite;
+}
+@keyframes navPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+.nav__auth-btn {
+  display: flex; align-items: center; gap: 7px;
+  height: 36px; padding: 0 16px; border-radius: 999px;
+  border: 1px solid rgba(20,19,17,0.14); background: #fff;
+  font-size: 15px; font-weight: 600; color: #141311;
+  white-space: nowrap;
+}
+.nav__auth-btn:hover { background: #f6f3ec; }
+
+.nav__user { position: relative; }
+.nav__user-btn {
+  display: flex; align-items: center; gap: 7px;
+  height: 36px; padding: 4px 12px 4px 4px; border-radius: 999px;
+  border: 1px solid rgba(20,19,17,0.14); background: #fff;
+  cursor: pointer;
+}
+.nav__user-avatar { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; }
+.nav__user-avatar-fb {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: #141311; color: #f6f3ec;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600;
+}
+.nav__user-name {
+  font-size: 15px; font-weight: 600; color: #141311;
+  max-width: 96px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.nav__user-btn svg.rotated { transform: rotate(180deg); }
+.nav__user-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  min-width: 200px; background: #fff;
+  border: 1px solid rgba(20,19,17,0.10); border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18); overflow: hidden;
+  z-index: 10;
+}
+.nav__user-dropdown-info { padding: 12px 14px; border-bottom: 1px solid rgba(20,19,17,0.08); }
+.nav__user-dropdown-name { font-size: 15px; font-weight: 600; color: #141311; margin-bottom: 1px; }
+.nav__user-dropdown-email { font-size: 14px; color: #8a887c; overflow: hidden; text-overflow: ellipsis; }
+.nav__user-dropdown-out {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%; padding: 10px 14px;
+  font-size: 15px; color: #6f6e64;
+}
+.nav__user-dropdown-out:hover { background: #fdf0ee; color: #c2453a; }
+
+/* CTA */
+.nav__cta {
+  display: flex; align-items: center; gap: 8px;
+  height: 36px;
+  background: #141311; color: #f6f3ec;
+  padding: 0 14px 0 6px;
+  border-radius: 999px;
+  font-size: 15px; font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+.nav__cta:hover { opacity: 0.85; }
+.nav__cta-icon {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #a9e857; color: #173404;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Hamburger */
+.nav__hamburger { display: none; color: #141311; padding: 4px; }
+.nav__mobile {
+  display: none; flex-direction: column;
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px; gap: 2px;
+  background: #fff; border-radius: 20px;
+  border: 1px solid rgba(20,19,17,0.08);
+}
+.nav__mobile-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px; border-radius: 999px;
+  font-size: 16px; font-weight: 500; color: #6f6e64;
+  transition: color 0.15s, background 0.15s;
+}
+.nav__mobile-link:hover, .nav__mobile-link.active { color: #141311; background: #f6f3ec; }
+.nav__mobile-link--cta { color: #141311; font-weight: 700; }
+
+@media (max-width: 860px) {
+  .nav__links, .nav__cta { display: none; }
+  .nav__hamburger { display: flex; }
+  .nav__mobile { display: flex; }
+
+  /* nav__row is its own isolated flex row (separate from nav__mobile below
+     it), so brand and the right-side buttons can never get pushed onto
+     two lines the way they could when they shared a wrapping flex flow. */
+  .nav__row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .nav__brand { flex: 1 1 auto; min-width: 0; max-width: 60%; }
+  .nav__right { flex: 0 0 auto; }
+}
+
+/* 999px radius only looks like a pill at ~60px tall. Once the dropdown
+   opens, .nav gets much taller and that same radius balloons into
+   distorted rounded lobes at the corners instead of a clean rect. */
+.nav--menu-open {
+  border-radius: 28px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav { animation: none; }
+}
