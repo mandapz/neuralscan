@@ -303,29 +303,6 @@ def create_app():
         }), 500
 
     # ========================================================
-    # DATABASE TABLES
-    #
-    # IMPORTANT:
-    # This is okay for initial deployment/testing.
-    # For production database migrations, use Flask-Migrate.
-    # ========================================================
-
-    try:
-
-        with app.app_context():
-            db.create_all()
-
-    except Exception as e:
-
-        logger.exception(
-            "Database initialization failed: %s",
-            e
-        )
-
-        # Do not crash application immediately.
-        # This allows /api/health to still tell us what happened.
-
-    # ========================================================
     # LOG CONFIGURATION
     # ========================================================
 
